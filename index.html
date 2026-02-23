@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>успокотительное для Леры❤️🐱</title>
+
+  <style>
+    :root{
+      --bg1:#062b1c;
+      --bg2:#0b3a27;
+      --bg3:#0f4b33;
+      --mint:#b8ffd7;
+      --mint2:#7ff0b8;
+      --text:#eafff4;
+      --muted:rgba(234,255,244,.75);
+      --shadow:0 18px 45px rgba(0,0,0,.35);
+      --glow:0 0 30px rgba(127,240,184,.25);
+      --dur:640ms; /* плавность переходов страниц */
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      overflow:hidden;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(127,240,184,.18), transparent 55%),
+        radial-gradient(900px 650px at 80% 25%, rgba(184,255,215,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+    }
+
+    /* лёгкий “туман” */
+    .mist{
+      position:fixed; inset:-25%;
+      pointer-events:none;
+      opacity:.7;
+      filter: blur(22px);
+      background:
+        radial-gradient(closest-side, rgba(184,255,215,.10), transparent 70%) 20% 30%/32% 32% no-repeat,
+        radial-gradient(closest-side, rgba(127,240,184,.10), transparent 70%) 65% 45%/36% 36% no-repeat,
+        radial-gradient(closest-side, rgba(184,255,215,.08), transparent 70%) 45% 75%/42% 42% no-repeat;
+      animation: floatMist 16s ease-in-out infinite alternate;
+    }
+    @keyframes floatMist{
+      from{ transform: translate3d(-2%, -1%, 0) scale(1); }
+      to  { transform: translate3d( 2%,  1.5%,0) scale(1.03); }
+    }
+
+    /* контейнер страниц без рамок */
+    .app{
+      position:relative;
+      height:100%;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right))
+               max(16px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+    }
+
+    .stage{
+      width:min(920px, 100%);
+      height:min(780px, 100%);
+      position:relative;
+    }
+
+    /* верхняя панель */
+    .topbar{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 6px;
+      user-select:none;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: var(--glow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size:14px;
+      color: var(--muted);
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(180deg, var(--mint2), rgba(127,240,184,.35));
+      box-shadow: 0 0 14px rgba(127,240,184,.55);
+      flex:0 0 auto;
+    }
+
+    .progress{
+      flex:1;
+      height:10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      overflow:hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .progress > i{
+      display:block;
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(127,240,184,.15), rgba(127,240,184,.85), rgba(184,255,215,.25));
+      border-radius:999px;
+      transition: width 420ms ease;
+    }
+
+    /* страницы */
+    .pages{
+      position:absolute;
+      top:54px;
+      left:0;
+      right:0;
+      bottom:70px;
+      overflow:hidden;
+    }
+
+    .page{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 18px 14px;
+      opacity:0;
+      transform: translate3d(0,12px,0);
+      pointer-events:none;
+      transition: opacity var(--dur) ease, transform var(--dur) ease;
+    }
+    .page.active{
+      opacity:1;
+      transform: translate3d(0,0,0);
+      pointer-events:auto;
+    }
+
+    h1,h2{
+      margin: 10px 0 8px;
+      line-height:1.05;
+      letter-spacing:.2px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    h1{
+      font-size: clamp(28px, 4.2vw, 54px);
+    }
+    h2{
+      font-size: clamp(22px, 3.4vw, 40px);
+      color: rgba(234,255,244,.95);
+    }
+    p{
+      margin: 10px 0;
+      max-width: 740px;
+      font-size: clamp(16px, 2.1vw, 22px);
+      line-height:1.55;
+      color: rgba(234,255,244,.88);
+      text-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+
+    .small{
+      font-size: clamp(14px, 1.9vw, 18px);
+      color: rgba(234,255,244,.72);
+      max-width: 760px;
+    }
+
+    /* кнопки снизу */
+    .nav{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 6px;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color: rgba(234,255,244,.95);
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-weight:700;
+      letter-spacing:.2px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor:pointer;
+      transition: transform 120ms ease, background 220ms ease, border-color 220ms ease;
+      min-width: 132px;
+    }
+    .btn:active{ transform: scale(.98); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(127,240,184,.28), rgba(127,240,184,.10));
+      border-color: rgba(127,240,184,.35);
+      box-shadow: 0 16px 36px rgba(0,0,0,.25), 0 0 26px rgba(127,240,184,.22);
+    }
+    .btn.ghost{
+      background: rgba(255,255,255,.06);
+    }
+    .btn:disabled{
+      opacity:.35;
+      cursor:not-allowed;
+    }
+
+    /* котики (SVG блок) */
+    .kittyWrap{
+      width: min(420px, 76vw);
+      height: min(420px, 42vh);
+      margin: 6px 0 10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.35));
+    }
+    svg.kitty{
+      width:100%;
+      height:100%;
+    }
+
+    /* лёгкие анимации котика */
+    .blink{
+      transform-origin: center;
+      animation: blink 5.5s infinite;
+    }
+    @keyframes blink{
+      0%, 3%, 100% { transform: scaleY(1); }
+      1.5% { transform: scaleY(.10); }
+    }
+    .tail{
+      transform-origin: 70% 70%;
+      animation: tailWag 2.4s ease-in-out infinite alternate;
+    }
+    @keyframes tailWag{
+      from{ transform: rotate(-6deg); }
+      to{ transform: rotate(8deg); }
+    }
+    .bounce{
+      transform-origin: 50% 80%;
+      animation: kittyBob 3.2s ease-in-out infinite;
+    }
+    @keyframes kittyBob{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(8px); }
+    }
+
+    /* дыхание */
+    .breathOrb{
+      width:min(280px, 62vw);
+      height:min(280px, 30vh);
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.22), transparent 40%),
+        radial-gradient(circle at 65% 75%, rgba(255,255,255,.10), transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(127,240,184,.33), rgba(127,240,184,.12) 55%, rgba(127,240,184,.06) 75%, rgba(127,240,184,.03));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 22px 60px rgba(0,0,0,.35), 0 0 40px rgba(127,240,184,.22);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      margin: 10px 0 10px;
+      transform: scale(.86);
+    }
+    .breathOrb.run{
+      animation: inhale 4s ease-in-out forwards, exhale 5s ease-in-out 4s forwards;
+    }
+    @keyframes inhale{
+      from{ transform: scale(.86); filter: saturate(1); }
+      to  { transform: scale(1.02); filter: saturate(1.08); }
+    }
+    @keyframes exhale{
+      from{ transform: scale(1.02); filter: saturate(1.08); }
+      to  { transform: scale(.86); filter: saturate(1); }
+    }
+
+    .breathText{
+      font-weight:800;
+      font-size: clamp(18px, 2.4vw, 26px);
+      margin-top: 4px;
+      color: rgba(234,255,244,.92);
+    }
+
+    /* игра “поймай лапку” (по всему экрану) */
+    .playArea{
+      position:absolute;
+      inset:54px 0 70px 0;
+      pointer-events:none;
+    }
+    .pawTarget{
+      position:absolute;
+      width: 78px;   /* в 2 раза меньше (раньше делали крупно) */
+      height: 78px;
+      border-radius: 18px;
+      display:grid;
+      place-items:center;
+      font-size: 46px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+      pointer-events:auto;
+      user-select:none;
+      touch-action: manipulation;
+      transform: translate3d(-999px,-999px,0);
+      transition: transform 120ms ease;
+    }
+    .pawTarget span{
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.25));
+    }
+
+    /* комплименты */
+    .compliment{
+      font-weight:900;
+      font-size: clamp(20px, 3.0vw, 36px);
+      margin-top: 10px;
+      background: linear-gradient(90deg,
+        rgba(184,255,215,.95),
+        rgba(127,240,184,.95),
+        rgba(255,255,255,.90));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+      text-shadow: 0 12px 40px rgba(0,0,0,.25);
+      min-height: 2.4em;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 0 10px;
+    }
+
+    /* слои частиц */
+    #fx{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .particle{
+      position:absolute;
+      left:0; top:0;
+      transform: translate3d(0,0,0);
+      will-change: transform, opacity;
+      opacity:0.95;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,.25));
+    }
+
+    /* подпись-микро */
+    .hintRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      margin-top: 10px;
+      opacity:.9;
+    }
+    .chip{
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      color: rgba(234,255,244,.82);
+      font-size: 13px;
+      user-select:none;
+    }
+
+    /* iOS: убираем выделения */
+    a,button{ -webkit-tap-highlight-color: transparent; }
+  </style>
+</head>
+
+<body>
+  <div class="mist"></div>
+  <div id="fx"></div>
+
+  <div class="app">
+    <div class="stage" aria-live="polite">
+      <div class="topbar">
+        <div class="pill"><span class="dot"></span><span id="counter">Страница 1 из 7</span></div>
+        <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+        <button id="soundBtn" class="btn ghost" style="min-width:170px">🔊 Включить звук</button>
+      </div>
+
+      <div class="pages" id="pages">
+        <!-- PAGE 1 -->
+        <section class="page active" data-title="Главная">
+          <div class="kittyWrap">
+            <!-- “почти реалистичный” котик (SVG) -->
+            <svg class="kitty" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-label="Котик">
+              <defs>
+                <radialGradient id="fur" cx="40%" cy="35%" r="70%">
+                  <stop offset="0%" stop-color="#f7f3ea"/>
+                  <stop offset="50%" stop-color="#d9d0c2"/>
+                  <stop offset="100%" stop-color="#b8aa98"/>
+                </radialGradient>
+                <radialGradient id="fur2" cx="55%" cy="40%" r="75%">
+                  <stop offset="0%" stop-color="#f8f6ef"/>
+                  <stop offset="55%" stop-color="#d7cebf"/>
+                  <stop offset="100%" stop-color="#b29f8b"/>
+                </radialGradient>
+                <radialGradient id="shine" cx="30%" cy="25%" r="60%">
+                  <stop offset="0%" stop-color="rgba(255,255,255,.55)"/>
+                  <stop offset="60%" stop-color="rgba(255,255,255,.10)"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                </radialGradient>
+              </defs>
+
+              <g class="bounce">
+                <!-- tail -->
+                <path class="tail" d="M310 300c55 10 78-22 62-50-10-18-38-22-58-9" fill="none" stroke="rgba(248,246,239,.75)" stroke-width="20" stroke-linecap="round"/>
+                <path class="tail" d="M308 300c50 9 70-19 56-42-9-15-31-18-49-7" fill="none" stroke="rgba(178,159,139,.55)" stroke-width="10" stroke-linecap="round"/>
+
+                <!-- head -->
+                <ellipse cx="210" cy="210" rx="150" ry="130" fill="url(#fur2)"/>
+                <!-- ears -->
+                <path d="M120 135c-18-55 15-95 50-92 7 27 7 62-4 92" fill="url(#fur)"/>
+                <path d="M300 135c18-55-15-95-50-92-7 27-7 62 4 92" fill="url(#fur)"/>
+                <path d="M133 125c-10-35 10-58 30-57 5 16 5 38-2 57" fill="rgba(255,180,190,.35)"/>
+                <path d="M287 125c10-35-10-58-30-57-5 16-5 38 2 57" fill="rgba(255,180,190,.35)"/>
+
+                <!-- cheeks -->
+                <ellipse cx="140" cy="235" rx="40" ry="26" fill="rgba(255,180,190,.10)"/>
+                <ellipse cx="280" cy="235" rx="40" ry="26" fill="rgba(255,180,190,.10)"/>
+
+                <!-- eyes -->
+                <g>
+                  <ellipse cx="160" cy="195" rx="30" ry="34" fill="#1d2a24"/>
+                  <ellipse cx="260" cy="195" rx="30" ry="34" fill="#1d2a24"/>
+                  <ellipse cx="150" cy="188" rx="10" ry="12" fill="rgba(255,255,255,.80)"/>
+                  <ellipse cx="250" cy="188" rx="10" ry="12" fill="rgba(255,255,255,.80)"/>
+                  <g class="blink">
+                    <path d="M132 205c16 12 40 12 56 0" fill="none" stroke="rgba(178,159,139,.28)" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M232 205c16 12 40 12 56 0" fill="none" stroke="rgba(178,159,139,.28)" stroke-width="6" stroke-linecap="round"/>
+                  </g>
+                </g>
+
+                <!-- nose + mouth -->
+                <path d="M205 232c6-7 14-7 20 0-4 9-16 9-20 0" fill="rgba(255,150,160,.75)"/>
+                <path d="M210 242c-12 10-28 18-46 12" fill="none" stroke="rgba(30,42,36,.55)" stroke-width="6" stroke-linecap="round"/>
+                <path d="M210 242c12 10 28 18 46 12" fill="none" stroke="rgba(30,42,36,.55)" stroke-width="6" stroke-linecap="round"/>
+
+                <!-- whiskers -->
+                <path d="M85 235c45-8 70-8 104 4" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="4" stroke-linecap="round"/>
+                <path d="M85 255c48-2 74 1 108 12" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="4" stroke-linecap="round"/>
+                <path d="M335 235c-45-8-70-8-104 4" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="4" stroke-linecap="round"/>
+                <path d="M335 255c-48-2-74 1-108 12" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="4" stroke-linecap="round"/>
+
+                <!-- shine -->
+                <ellipse cx="175" cy="155" rx="120" ry="90" fill="url(#shine)" opacity=".55"/>
+              </g>
+            </svg>
+          </div>
+
+          <h1>успокотительное для Леры❤️🐱</h1>
+          <p class="small">Тут всё сделано так, чтобы становилось тише внутри. Листай дальше — будет дыхание, мурчание, игры и сюрпризы.</p>
+
+          <div class="hintRow">
+            <span class="chip">🌿 зелёные оттенки</span>
+            <span class="chip">🐾 мягкие антистрессы</span>
+            <span class="chip">🐱 котики</span>
+          </div>
+        </section>
+
+        <!-- PAGE 2: Breath -->
+        <section class="page" data-title="Дыхание">
+          <h2>Дышим вместе</h2>
+          <div class="breathOrb" id="orb" aria-hidden="true"></div>
+          <div class="breathText" id="breathLabel">Нажми «Старт дыхания»</div>
+          <p class="small">Вдох 4 секунды → выдох 5 секунд. Можно повторять сколько хочешь.</p>
+
+          <div style="height:10px"></div>
+          <button class="btn primary" id="breathBtn" style="min-width:220px">🫧 Старт дыхания</button>
+        </section>
+
+        <!-- PAGE 3: Purr + paws -->
+        <section class="page" data-title="Мурчание">
+          <h2>Мурчание котика</h2>
+          <p>Нажми «Муррр» — и включится мягкое мурчание. Потом можно выключить.</p>
+
+          <div style="height:10px"></div>
+          <button class="btn primary" id="purrBtn" style="min-width:220px">😺 Муррр</button>
+
+          <p class="small" style="margin-top:14px">И ещё: при переходе на страницу сейчас будет лёгкое “падение лапок” 4 секунды 🐾</p>
+        </section>
+
+        <!-- PAGE 4: calm mini -->
+        <section class="page" data-title="Тишина">
+          <h2>Тихий режим</h2>
+          <p>Посмотри на котика. Просто 10 секунд ничего не делай. Разреши себе отдохнуть.</p>
+
+          <div class="kittyWrap" style="height:min(320px, 34vh)">
+            <svg class="kitty" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-label="Котик с клубочком">
+              <defs>
+                <radialGradient id="furA" cx="35%" cy="30%" r="75%">
+                  <stop offset="0%" stop-color="#f6f4ee"/>
+                  <stop offset="55%" stop-color="#d9d2c6"/>
+                  <stop offset="100%" stop-color="#b8aa98"/>
+                </radialGradient>
+                <radialGradient id="ball" cx="35%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="rgba(127,240,184,.65)"/>
+                  <stop offset="100%" stop-color="rgba(127,240,184,.15)"/>
+                </radialGradient>
+              </defs>
+
+              <g class="bounce">
+                <ellipse cx="210" cy="220" rx="150" ry="120" fill="url(#furA)"/>
+                <path d="M105 160c-20-60 12-105 52-102 8 30 8 68-4 102" fill="url(#furA)"/>
+                <path d="M315 160c20-60-12-105-52-102-8 30-8 68 4 102" fill="url(#furA)"/>
+
+                <ellipse cx="160" cy="210" rx="28" ry="32" fill="#1d2a24"/>
+                <ellipse cx="260" cy="210" rx="28" ry="32" fill="#1d2a24"/>
+                <ellipse cx="152" cy="200" rx="9" ry="11" fill="rgba(255,255,255,.82)"/>
+                <ellipse cx="252" cy="200" rx="9" ry="11" fill="rgba(255,255,255,.82)"/>
+
+                <path d="M205 245c6-7 14-7 20 0-4 9-16 9-20 0" fill="rgba(255,150,160,.75)"/>
+                <path d="M210 255c-12 10-28 18-46 12" fill="none" stroke="rgba(30,42,36,.55)" stroke-width="6" stroke-linecap="round"/>
+                <path d="M210 255c12 10 28 18 46 12" fill="none" stroke="rgba(30,42,36,.55)" stroke-width="6" stroke-linecap="round"/>
+
+                <!-- клубочек -->
+                <g class="tail" transform="translate(0,8)">
+                  <circle cx="300" cy="305" r="44" fill="url(#ball)" stroke="rgba(255,255,255,.16)" stroke-width="2"/>
+                  <path d="M270 300c18-12 40-12 58 2" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M276 320c14-10 32-10 48 2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="4" stroke-linecap="round"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <p class="small">Если хочешь — нажми дальше, будет мини-игра 🐾</p>
+        </section>
+
+        <!-- PAGE 5: catch paw -->
+        <section class="page" data-title="Поймай лапку">
+          <h2>Поймай лапку 🐾</h2>
+          <p class="small">Лапка летает по всему экрану. Поймай её пальцем. Она розовая и шустрая 😼</p>
+
+          <div class="hintRow">
+            <span class="chip">попаданий: <b id="hits">0</b></span>
+            <span class="chip">скорость: <b id="speedLbl">средняя</b></span>
+          </div>
+
+          <!-- лапка поверх всего экрана (по всему экрану, не в окошке) -->
+          <div class="playArea" id="playArea">
+            <div class="pawTarget" id="pawTarget" aria-label="Лапка"><span>🐾</span></div>
+          </div>
+
+          <div style="height:28px"></div>
+          <button class="btn primary" id="startGame" style="min-width:220px">🎮 Начать</button>
+          <button class="btn ghost" id="stopGame" style="min-width:220px; display:none;">🧊 Остановить</button>
+        </section>
+
+        <!-- PAGE 6: hugs -->
+        <section class="page" data-title="Обнимашки">
+          <h2>Обнимашки</h2>
+          <p>Нажми кнопку — и котята “падают” сверху 🐱💚</p>
+          <div style="height:10px"></div>
+          <button class="btn primary" id="hugsBtn" style="min-width:240px">🤗 Обнимашки</button>
+          <p class="small" style="margin-top:14px">Я сделал их крупными (в 3 раза) и не слишком много — чтобы не зависало.</p>
+        </section>
+
+        <!-- PAGE 7: compliments -->
+        <section class="page" data-title="Сюрприз">
+          <h2>Сюрприз ✨</h2>
+          <p class="small">Нажимай — и каждый раз будет новая тёплая фраза.</p>
+          <div class="compliment" id="compliment">💚</div>
+          <div style="height:10px"></div>
+          <button class="btn primary" id="complBtn" style="min-width:240px">🎁 Сказать</button>
+          <p class="small" style="margin-top:14px">И да — тут тоже можно устроить маленький дождик лапок, но мягко.</p>
+        </section>
+      </div>
+
+      <div class="nav">
+        <button class="btn ghost" id="prevBtn">← Назад</button>
+        <button class="btn primary" id="nextBtn">Дальше →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* --------------------------
+       Pages / navigation
+    ---------------------------*/
+    const pages = Array.from(document.querySelectorAll('.page'));
+    const counter = document.getElementById('counter');
+    const bar = document.getElementById('bar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let idx = 0; // текущая страница
+
+    function setPage(newIdx, {withPaws=true} = {}){
+      newIdx = Math.max(0, Math.min(pages.length - 1, newIdx));
+      if(newIdx === idx) return;
+
+      pages[idx].classList.remove('active');
+      idx = newIdx;
+      pages[idx].classList.add('active');
+
+      // обновить верхнюю панель
+      counter.textContent = `Страница ${idx+1} из ${pages.length}`;
+      bar.style.width = `${((idx+1)/pages.length)*100}%`;
+
+      // кнопки
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === pages.length - 1;
+      nextBtn.textContent = idx === pages.length - 1 ? 'Готово ✓' : 'Дальше →';
+
+      // лёгкие лапки при переходе (4 секунды)
+      if(withPaws) pawRain(4_000);
+
+      // авто-стоп игры при уходе
+      if(idx !== 4) stopPawGame();
+    }
+
+    prevBtn.addEventListener('click', ()=> setPage(idx-1));
+    nextBtn.addEventListener('click', ()=> setPage(idx+1));
+
+    // начальный UI
+    counter.textContent = `Страница 1 из ${pages.length}`;
+    bar.style.width = `${(1/pages.length)*100}%`;
+    prevBtn.disabled = true;
+
+    /* --------------------------
+       FX particles
+    ---------------------------*/
+    const fx = document.getElementById('fx');
+    const rand = (a,b)=> a + Math.random()*(b-a);
+
+    // лёгкий дождик лапок по всему экрану на 4 сек, не много, крупнее
+    function pawRain(durationMs=4000){
+      const start = performance.now();
+      const total = 28; // немного, чтобы не лагало
+      for(let i=0;i<total;i++){
+        const delay = rand(0, durationMs*0.7);
+        setTimeout(()=>{
+          spawnPaw();
+        }, delay);
+      }
+      // чистка через duration+чуть
+      setTimeout(()=> cleanupParticles(), durationMs + 1200);
+
+      function spawnPaw(){
+        const el = document.createElement('div');
+        el.className = 'particle';
+        el.textContent = '🐾';
+        el.style.fontSize = `${rand(44, 70)}px`; // крупнее
+        el.style.left = `${rand(-10, 100)}vw`;
+        el.style.top = `-10vh`;
+        el.style.opacity = rand(0.65, 0.95);
+
+        fx.appendChild(el);
+
+        const x0 = rand(-6, 6);
+        const x1 = rand(-18, 18);
+        const y1 = rand(105, 125);
+        const rot = rand(-50, 50);
+
+        const t0 = performance.now();
+        const fallMs = rand(2600, 3800);
+
+        function anim(t){
+          const p = Math.min(1, (t - t0)/fallMs);
+          const ease = 1 - Math.pow(1-p, 3);
+          const x = x0 + (x1-x0)*ease;
+          const y = y1*ease;
+          el.style.transform = `translate3d(${x}vw, ${y}vh, 0) rotate(${rot*ease}deg)`;
+          el.style.opacity = (1 - p) * 0.95;
+          if(p < 1) requestAnimationFrame(anim);
+          else el.remove();
+        }
+        requestAnimationFrame(anim);
+      }
+    }
+
+    function cleanupParticles(){
+      // мягко ограничим “мусор”
+      while(fx.children.length > 120){
+        fx.removeChild(fx.firstChild);
+      }
+    }
+
+    // котята-эмодзи (обнимашки) крупные, но мало
+    function kittenFall(){
+      const total = 18; // немного
+      for(let i=0;i<total;i++){
+        const delay = rand(0, 700);
+        setTimeout(()=>{
+          const el = document.createElement('div');
+          el.className = 'particle';
+          el.textContent = ['🐱','😺','😻','🐈','🐈‍⬛'][Math.floor(rand(0,5))];
+          el.style.fontSize = `${rand(72, 96)}px`; // в 3 раза больше примерно
+          el.style.left = `${rand(-5, 100)}vw`;
+          el.style.top = `-12vh`;
+          el.style.opacity = rand(0.75, 0.98);
+          fx.appendChild(el);
+
+          const x0 = rand(-8, 8);
+          const x1 = rand(-20, 20);
+          const y1 = rand(110, 130);
+          const rot = rand(-35, 35);
+          const t0 = performance.now();
+          const fallMs = rand(2600, 3800);
+
+          function anim(t){
+            const p = Math.min(1, (t - t0)/fallMs);
+            const ease = 1 - Math.pow(1-p, 3);
+            el.style.transform = `translate3d(${x0 + (x1-x0)*ease}vw, ${y1*ease}vh, 0) rotate(${rot*ease}deg)`;
+            el.style.opacity = (1 - p)*0.95;
+            if(p < 1) requestAnimationFrame(anim);
+            else el.remove();
+          }
+          requestAnimationFrame(anim);
+        }, delay);
+      }
+      setTimeout(()=> cleanupParticles(), 4200);
+    }
+
+    /* --------------------------
+       Breath: inhale 4s, exhale 5s
+    ---------------------------*/
+    const orb = document.getElementById('orb');
+    const breathBtn = document.getElementById('breathBtn');
+    const breathLabel = document.getElementById('breathLabel');
+    let breathRunning = false;
+
+    breathBtn.addEventListener('click', ()=>{
+      if(breathRunning) return;
+      breathRunning = true;
+
+      breathLabel.textContent = 'Вдох… 4';
+      orb.classList.remove('run');
+      void orb.offsetWidth;
+      orb.classList.add('run');
+
+      let t = 4;
+      const tick = setInterval(()=>{
+        t--;
+        if(t > 0) breathLabel.textContent = `Вдох… ${t}`;
+      }, 1000);
+
+      // через 4 секунды — выдох 5
+      setTimeout(()=>{
+        clearInterval(tick);
+        let e = 5;
+        breathLabel.textContent = 'Выдох… 5';
+        const tick2 = setInterval(()=>{
+          e--;
+          if(e > 0) breathLabel.textContent = `Выдох… ${e}`;
+        }, 1000);
+
+        setTimeout(()=>{
+          clearInterval(tick2);
+          breathLabel.textContent = 'Готово 💚 Можно ещё раз';
+          breathRunning = false;
+        }, 5000);
+
+      }, 4000);
+    });
+
+    /* --------------------------
+       Sound: iOS needs user gesture
+       - Button "Включить звук" unlocks audio context
+       - Purr = oscillator + soft noise
+    ---------------------------*/
+    const soundBtn = document.getElementById('soundBtn');
+    let audioCtx = null;
+    let master = null;
+    let purrOn = false;
+    let purrNodes = null;
+
+    function ensureAudio(){
+      if(audioCtx) return true;
+      try{
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        master = audioCtx.createGain();
+        master.gain.value = 0.35;
+        master.connect(audioCtx.destination);
+        return true;
+      }catch(e){
+        return false;
+      }
+    }
+
+    soundBtn.addEventListener('click', async ()=>{
+      if(!ensureAudio()){
+        soundBtn.textContent = '🔇 Звук недоступен';
+        return;
+      }
+      if(audioCtx.state === 'suspended') await audioCtx.resume();
+      soundBtn.textContent = '🔊 Звук включён';
+      // маленький “плик” чтобы точно разблокировалось
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'sine';
+      o.frequency.value = 660;
+      g.gain.value = 0.0001;
+      o.connect(g); g.connect(master);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.10);
+      o.stop(audioCtx.currentTime + 0.12);
+    });
+
+    // purr button
+    const purrBtn = document.getElementById('purrBtn');
+
+    function startPurr(){
+      if(!ensureAudio()) return;
+      if(audioCtx.state === 'suspended') audioCtx.resume();
+
+      // low sine + slightly modulated to imitate purr
+      const osc = audioCtx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.value = 27;
+
+      const osc2 = audioCtx.createOscillator();
+      osc2.type = 'sine';
+      osc2.frequency.value = 54;
+
+      const lfo = audioCtx.createOscillator();
+      lfo.type = 'sine';
+      lfo.frequency.value = 0.9;
+
+      const gain = audioCtx.createGain();
+      gain.gain.value = 0.0001;
+
+      const lfoGain = audioCtx.createGain();
+      lfoGain.gain.value = 0.22; // modulation depth
+
+      // optional soft noise (very low)
+      const noiseBuf = audioCtx.createBuffer(1, audioCtx.sampleRate * 1.8, audioCtx.sampleRate);
+      const data = noiseBuf.getChannelData(0);
+      for(let i=0;i<data.length;i++){
+        data[i] = (Math.random()*2-1) * 0.12;
+      }
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = noiseBuf;
+      noise.loop = true;
+
+      const noiseFilter = audioCtx.createBiquadFilter();
+      noiseFilter.type = 'lowpass';
+      noiseFilter.frequency.value = 220;
+
+      const noiseGain = audioCtx.createGain();
+      noiseGain.gain.value = 0.05;
+
+      lfo.connect(lfoGain);
+      lfoGain.connect(gain.gain);
+
+      osc.connect(gain);
+      osc2.connect(gain);
+
+      noise.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(gain);
+
+      gain.connect(master);
+
+      osc.start();
+      osc2.start();
+      lfo.start();
+      noise.start();
+
+      gain.gain.exponentialRampToValueAtTime(0.22, audioCtx.currentTime + 0.12);
+
+      purrNodes = {osc, osc2, lfo, noise, gain};
+      purrOn = true;
+      purrBtn.textContent = '🙀 Выключить мурчание';
+    }
+
+    function stopPurr(){
+      if(!purrNodes) return;
+      const {osc, osc2, lfo, noise, gain} = purrNodes;
+      const t = audioCtx.currentTime;
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.15);
+      setTimeout(()=>{
+        try{ osc.stop(); osc2.stop(); lfo.stop(); noise.stop(); }catch(e){}
+        purrNodes = null;
+      }, 220);
+      purrOn = false;
+      purrBtn.textContent = '😺 Муррр';
+    }
+
+    purrBtn.addEventListener('click', ()=>{
+      if(!audioCtx){
+        // подсказка через кнопку звука
+        soundBtn.classList.add('primary');
+        setTimeout(()=> soundBtn.classList.remove('primary'), 300);
+      }
+      if(purrOn) stopPurr();
+      else startPurr();
+    });
+
+    /* --------------------------
+       Page 5 game: moving paw full screen
+    ---------------------------*/
+    const playArea = document.getElementById('playArea');
+    const pawTarget = document.getElementById('pawTarget');
+    const startGame = document.getElementById('startGame');
+    const stopGame = document.getElementById('stopGame');
+    const hitsEl = document.getElementById('hits');
+    const speedLbl = document.getElementById('speedLbl');
+
+    let gameOn = false;
+    let hits = 0;
+    let vx=0, vy=0, px=0, py=0;
+    let rafId = null;
+
+    function areaRect(){
+      // по всему “видимому” экрану (внутри stage)
+      return playArea.getBoundingClientRect();
+    }
+
+    function placePaw(x,y){
+      pawTarget.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    }
+
+    function startPawGame(){
+      if(gameOn) return;
+      gameOn = true;
+      hits = 0;
+      hitsEl.textContent = hits;
+
+      startGame.style.display = 'none';
+      stopGame.style.display = 'inline-flex';
+
+      // начальные координаты
+      const r = areaRect();
+      px = rand(0, Math.max(0, r.width - 90));
+      py = rand(0, Math.max(0, r.height - 90));
+
+      vx = rand(-1.2, 1.2);
+      vy = rand(-1.0, 1.0);
+      if(Math.abs(vx) < 0.6) vx = (vx < 0 ? -0.9 : 0.9);
+      if(Math.abs(vy) < 0.5) vy = (vy < 0 ? -0.7 : 0.7);
+
+      speedLbl.textContent = 'средняя';
+      placePaw(px, py);
+
+      const step = ()=>{
+        if(!gameOn) return;
+
+        const rr = areaRect();
+        const maxX = Math.max(0, rr.width - 90);
+        const maxY = Math.max(0, rr.height - 90);
+
+        px += vx * 3.2; // скорость
+        py += vy * 3.0;
+
+        if(px < 0){ px = 0; vx *= -1; }
+        if(py < 0){ py = 0; vy *= -1; }
+        if(px > maxX){ px = maxX; vx *= -1; }
+        if(py > maxY){ py = maxY; vy *= -1; }
+
+        placePaw(px, py);
+        rafId = requestAnimationFrame(step);
+      };
+      rafId = requestAnimationFrame(step);
+    }
+
+    function stopPawGame(){
+      if(!gameOn) return;
+      gameOn = false;
+      if(rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+      pawTarget.style.transform = `translate3d(-999px,-999px,0)`;
+      startGame.style.display = 'inline-flex';
+      stopGame.style.display = 'none';
+    }
+
+    pawTarget.addEventListener('click', ()=>{
+      if(!gameOn) return;
+      hits++;
+      hitsEl.textContent = hits;
+
+      // ускорение слегка, но без жести
+      const boost = Math.min(1.0, 0.10 + hits*0.02);
+      vx += (vx>0? boost : -boost);
+      vy += (vy>0? boost*0.9 : -boost*0.9);
+
+      if(hits >= 8) speedLbl.textContent = 'быстрая';
+      if(hits >= 15) speedLbl.textContent = 'очень быстрая';
+
+      // маленький “поп” эффект
+      pawTarget.style.transition = 'transform 120ms ease, filter 120ms ease';
+      pawTarget.style.filter = 'drop-shadow(0 14px 22px rgba(0,0,0,.28)) saturate(1.2)';
+      setTimeout(()=> pawTarget.style.filter = 'drop-shadow(0 12px 18px rgba(0,0,0,.25))', 120);
+
+      // немного лапок (чтобы не лагало)
+      pawRain(1200);
+    });
+
+    startGame.addEventListener('click', startPawGame);
+    stopGame.addEventListener('click', stopPawGame);
+
+    /* --------------------------
+       Page 6: hugs -> kitten fall
+    ---------------------------*/
+    document.getElementById('hugsBtn').addEventListener('click', ()=>{
+      kittenFall();
+    });
+
+    /* --------------------------
+       Page 7: compliments
+    ---------------------------*/
+    const complBtn = document.getElementById('complBtn');
+    const compliment = document.getElementById('compliment');
+
+    const compliments = [
+      'я тебя очень сильно люблю',
+      'ты — самая нежная и красивая',
+      'с тобой спокойно даже в шуме',
+      'ты умеешь делать мир лучше',
+      'ты невероятно милая',
+      'твоя улыбка — мой любимый свет',
+      'ты достойна самого тёплого',
+      'ты — чудо, честно',
+      'с тобой хочется жить мягко',
+      'ты прекрасная. всегда.'
+    ];
+    let ci = -1;
+
+    complBtn.addEventListener('click', ()=>{
+      ci = (ci + 1) % compliments.length;
+      compliment.textContent = compliments[ci];
+
+      // мягкий “дождик лапок” очень лёгкий
+      pawRain(1600);
+    });
+
+    /* --------------------------
+       Extra: paw rain on first open? (very light)
+    ---------------------------*/
+    setTimeout(()=> pawRain(1800), 300);
+
+    /* --------------------------
+       IMPORTANT:
+       Чтобы кнопка “Назад” не делала пустую страницу:
+       мы не трогаем историю браузера вообще.
+       Всё внутри setPage().
+    ---------------------------*/
+
+    /* --------------------------
+       Make paw icon on page 5 pink (as requested)
+    ---------------------------*/
+    // Используем фильтр + фон не меняем, только визуально делаем “розовее” эмодзи
+    pawTarget.querySelector('span').style.filter = 'hue-rotate(300deg) saturate(1.6)';
+
+    /* --------------------------
+       On page change also update title optionally
+    ---------------------------*/
+    function syncTitle(){
+      document.title = 'успокотительное для Леры❤️🐱';
+    }
+    syncTitle();
+
+    // Лапки при переходе по кнопкам
+    const oldSetPage = setPage;
+    // оставляем как есть (уже с pawRain внутри)
+
+  </script>
+</body>
+</html>
